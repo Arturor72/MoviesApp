@@ -1,5 +1,7 @@
 package com.styloop.moviesapp;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,8 +53,18 @@ public class MainActivityFragment extends Fragment {
         Log.v(LOG_TAG,"UPDATE");
         FetchMoviesTask fetchMovies=new FetchMoviesTask(getContext(),adapter);
         String[] string={"Popular"};
+        String orderBY=getOrderByPreference();
+        string[0]=orderBY;
         fetchMovies.execute(string);
 
+    }
+
+    public String getOrderByPreference(){
+        String orderBy="Popular";
+        SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(getActivity());
+        orderBy=sharedPreferences.getString(getString(R.string.pref_order_by_key),getString(R.string.order_by_popular));
+        Log.v(LOG_TAG,"MY ORDER BY: "+orderBy);
+        return orderBy;
     }
 
 }
