@@ -1,9 +1,13 @@
 package com.styloop.moviesapp.model;
 
+import java.io.Serializable;
+
 /**
  * Created by arturo on 3/18/16.
  */
-public class Movie {
+public class Movie implements Serializable{
+
+
 
     private String id;
     private String originalTitle;
@@ -11,6 +15,7 @@ public class Movie {
     private String rating;
     private String releaseDate;
     private String urlPoster;
+    private String yearDate;
 
     public String getId() {
         return id;
@@ -50,6 +55,7 @@ public class Movie {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+        setYearDate(releaseDate.substring(0,4));
     }
 
     public String getUrlPoster() {
@@ -58,5 +64,13 @@ public class Movie {
 
     public void setUrlPoster(String urlPoster) {
         this.urlPoster = urlPoster;
+    }
+
+    public String getYearDate() {
+        return yearDate;
+    }
+
+    public void setYearDate(String yearDate) {
+        this.yearDate = yearDate;
     }
 }

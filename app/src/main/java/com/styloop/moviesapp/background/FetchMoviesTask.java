@@ -119,7 +119,7 @@ public class FetchMoviesTask extends AsyncTask<String, Void, Movie[]> {
         }else if(context.getString(R.string.order_by_top).equals(orderBy)){
             BASE_URL_FINAL=MOVIEDB_BASE_URL+ File.separator+MOVIE_TOP_RATED;
         }
-        Uri buildUri=Uri.parse(BASE_URL_FINAL).buildUpon().appendQueryParameter(APP_ID,"xxxx").build();
+        Uri buildUri=Uri.parse(BASE_URL_FINAL).buildUpon().appendQueryParameter(APP_ID,"xxxxxx").build();
         urlAsString=buildUri.toString();
         Log.d(LOG_TAG,"URL API MOVIE: "+urlAsString);
         return urlAsString;

@@ -14,7 +14,7 @@
     <string name="pref_title_oder_by">Movies Order by</string>
 
     <string name="pref_order_by_key">MovieOrderBy</string>
-
+    <string name="title_activity_detail_movie">DetailMovie</string>
 
 
 </resources>

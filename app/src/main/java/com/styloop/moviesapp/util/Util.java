@@ -24,7 +24,7 @@ public class Util {
     }
     public static void addMovies(Movie[] movies, JSONArray resultsArray) throws  JSONException{
         final String JSON_MOVIE_ID="id";
-        final String JSON_MOVIE_TITLE="original_title";
+        final String JSON_MOVIE_TITLE="title";
         final String JSON_MOVIE_POSTER_URL="poster_path";
         final String JSON_MOVIE_SYNOPSIS="overview";
         final String JSON_MOVIE_RELEASE_DATE="release_date";

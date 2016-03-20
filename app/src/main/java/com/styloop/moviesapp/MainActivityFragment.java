@@ -1,5 +1,6 @@
 package com.styloop.moviesapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -8,12 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 
 import com.styloop.moviesapp.adapter.MoviesAdapter;
 import com.styloop.moviesapp.background.FetchMoviesTask;
+import com.styloop.moviesapp.common.Constants;
 import com.styloop.moviesapp.model.Movie;
 
 import java.util.ArrayList;
@@ -41,12 +44,25 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView= inflater.inflate(R.layout.fragment_main, container, false);
+        final View rootView= inflater.inflate(R.layout.fragment_main, container, false);
         List<Movie> myMovies=new ArrayList<>();
         Movie testMovie=new Movie();
         adapter =new MoviesAdapter(getActivity(), myMovies);
         GridView gridView=(GridView) rootView.findViewById(R.id.init_movies);
         gridView.setAdapter(adapter);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie=adapter.getItem(position);
+                Intent goDetail= new Intent(rootView.getContext(),DetailMovie.class);
+                Bundle myBundle=new Bundle();
+                myBundle.putSerializable(Constants.EXTRA_KEY_MOVIE, movie);
+                goDetail.putExtras(myBundle);
+                startActivity(goDetail);
+            }
+        });
+
         return rootView;
     }
     public void updateMovies(){
